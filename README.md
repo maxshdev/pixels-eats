@@ -1,4 +1,4 @@
-# pixels-eats
+# Pixels Eats
 Symfony 7.2 application for restaurants witch a backoffice.
 
 ### PixelEats is a digital menu and backoffice platform for restaurants and cafes, created as an open source initiative by Pixels Studio. 
