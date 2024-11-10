@@ -1,7 +1,19 @@
 # Pixels Eats
-Symfony 7.2 application for restaurants witch a backoffice.
+Symfony 7.2 aplicación para restaurantes con un pequeño backoffice.
 
-### PixelEats is a digital menu and backoffice platform for restaurants and cafes, created as an open source initiative by Pixels Studio. 
-### With PixelEats, administrators can manage their products, customize their logo, and elegantly present their offers. 
+### PixelEats es una plataforma de menú digital y backoffice para restaurantes y cafeterías, creada como una iniciativa de código abierto por Pixels Studio.
+### Con PixelEats, los administradores pueden gestionar sus productos, personalizar su logotipo y presentar sus ofertas con elegancia.
 
-## "It is a free and unrestricted solution for businesses looking for modern and simple tools".
+> "Es una solución gratuita y libre de regalias para cualquier usuario que busca herramientas modernas y sencillas".
+
+## :hammer:Funcionalidades del proyecto
+- `Configuración del Negocio`: Detalles como la hora, ubicación, nombre, logo, urls y un banner que luego serán mostrados en el menu.
+- `Categorias`: Crear categorias para los productos.
+- `Productos`: Crear Productos y asignarlos a una Categoría.
+- `Usuarios`: Crear Usuarios para administrar el sistema posteriormente.
+
+## Recursos
+
+[<img src="https://tinypic.host/images/2024/11/10/logo-p-eats.png" width=300>](https://www.linkedin.com/in/maxshtefec/)<br>
+[<img src="https://avatars.githubusercontent.com/u/114096255?v=4" width=120>](https://www.linkedin.com/in/maxshtefec/) <br>
+[@maxshtefec](https://www.linkedin.com/in/maxshtefec/) :+1: Es el creador y donador de este fabuloso repositorio!
