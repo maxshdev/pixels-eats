@@ -15,7 +15,6 @@ use App\Entity\Producto;
 use App\Entity\Usuario;
 
 use App\Controller\Admin\ConfiguracionCrudController;
-use App\Controller\Admin\ProductoCrudController;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -25,14 +24,13 @@ class DashboardController extends AbstractDashboardController
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
 
         return $this->redirect($adminUrlGenerator->setController(ConfiguracionCrudController::class)->generateUrl());
-
-        // return $this->render('admin/index.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Pixels Eats');
+            ->setTitle('Pixels Eats')
+        ;
     }
 
     public function configureMenuItems(): iterable
@@ -46,17 +44,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Categorias', 'fa fa-tags', Categoria::class);
         yield MenuItem::linkToCrud('Productos', 'fa fa-tags', Producto::class);
         yield MenuItem::linkToCrud('Usuarios', 'fa fa-tags', Usuario::class);
-    }
-
-    public function someMethod()
-    {
-        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-
-        // some actions may require to pass additional parameters
-        $url = $adminUrlGenerator
-            ->setController(ConfiguracionCrudController::class)
-            ->setAction(Action::EDIT)
-            ->setEntityId($configuracion->getId())
-            ->generateUrl();
     }
 }
