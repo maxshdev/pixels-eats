@@ -8,9 +8,11 @@ Symfony 7.2 aplicación para restaurantes con un pequeño backoffice.
 
 ## :hammer:Funcionalidades del proyecto
 - `Configuración del Negocio`: Detalles como la hora, ubicación, nombre, logo, urls y un banner que luego serán mostrados en el menu.
-- `Categorias`: Crear categorias para los productos.
+- `Categorias`: Crear Categorias para los productos.
 - `Productos`: Crear Productos y asignarlos a una Categoría.
-- `Usuarios`: Crear Usuarios para administrar el sistema posteriormente.
+- `Usuarios`: Crear Usuarios para administrar el sistema.
+- `Comandos`: Se agrego un comando para poder generar el primer usuario.
+> php bin/console app:create-user admin@pixelseats.com pixelsAdmin userAdmin123 ROLE_ADMIN.
 
 ## Recursos
 
