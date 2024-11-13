@@ -16,6 +16,6 @@ Symfony 7.2 aplicación para restaurantes con un pequeño backoffice.
 
 ## Recursos
 
-[<img src="https://tinypic.host/images/2024/11/10/logo-p-eats.png" width=300>](https://www.linkedin.com/in/maxshtefec/)<br>
+<img src="https://github.com/user-attachments/assets/ad9be7e3-aed7-4745-8683-3cbb757cbe35" width=500> <br><br>
 <img src="https://github.com/user-attachments/assets/07b3ff93-2118-4bfc-b0a0-ca24334b9080" width=120> <br>
 [@maxshtefec](https://www.linkedin.com/in/maxshtefec/) :+1: Es el creador y donador de este fabuloso repositorio!
