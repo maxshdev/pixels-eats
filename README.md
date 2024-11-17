@@ -7,12 +7,17 @@ Symfony 7.2 aplicación para restaurantes con un pequeño backoffice.
 > "Es una solución gratuita y libre de regalias para cualquier usuario que busca herramientas modernas y sencillas".
 
 ## :hammer:Funcionalidades del proyecto
-- `Configuración del Negocio`: Detalles como la hora, ubicación, nombre, logo, urls y un banner que luego serán mostrados en el menu.
+- `Comercio`: Crear y Administrar Comercios.
+- `Sucursal`: Crear Sucursales de Comercios, detalles como la hora, ubicación, nombre, logo, urls y un banner que luego serán mostrados en el menu.
 - `Categorias`: Crear Categorias para los productos.
 - `Productos`: Crear Productos y asignarlos a una Categoría.
 - `Usuarios`: Crear Usuarios para administrar el sistema.
 - `Comandos`: Se agrego un comando para poder generar el primer usuario.
 > php bin/console app:create-user admin@pixelseats.com pixelsAdmin userAdmin123 ROLE_ADMIN.
+
+- `Roles`: Se agrego roles de usuarios, ROLE_USER, ROLE_ADMIN, ROLE_SUPER_ADMIN.
+- `Templates`: Se agrego templates en la sucursal que pueden ser utilizadas para definir un estilo en particular, bares, restaurantes, cafeterías.
+- `Slugs`: Se agrego slugs tanto en el comercio como en la sucursal, esto permite tener varias vistas de sucursales y comercios.
 
 ## Recursos
 
