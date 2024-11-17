@@ -3,6 +3,8 @@
 namespace App\Controller\Front;
 
 use App\Entity\Categoria;
+use App\Entity\Comercio;
+use App\Entity\Sucursal;
 use App\Entity\Configuracion;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,14 +25,27 @@ class HomepageController extends AbstractController
     #[Route('/')]
     public function indexAction(): Response
     {
-        $configuracion = $this->entityManager->getRepository(Configuracion::class)->findOneBy([]);
-        $categorias = $this->entityManager->getRepository(Categoria::class)->findAll(); // ya trae los productos.
+        return $this->render('front/index.html.twig', [
+            'configuracion' => true
+        ]);
+    }
+    
+    #[Route('/{slug_comercio}/{slug_sucursal}')]
+    public function sucursalAction(string $slug_comercio, string $slug_sucursal): Response
+    {
+        $sucursal = $this->entityManager->getRepository(Sucursal::class)->findOneBy(['slug' => $slug_sucursal]);
+        if (!$sucursal) throw $this->createNotFoundException('La Sucursal no existe.');
+        
+        $comercio = $sucursal->getComercioId();
+        if ($comercio->getSlug() != $slug_comercio) throw $this->createNotFoundException('El Comercio no existe.');
 
-        if (!$configuracion) throw $this->createNotFoundException('Configuración no disponible, debe cargar los detalles del negocio primero.');
+        $categorias = $comercio->getCategorias();
         if (!$categorias) throw $this->createNotFoundException('Categorias no encontradas, debe cargar las categorias y asignarlas al menos a un producto existente del negocio primero.');
 
-        return $this->render('front/index.html.twig', [
-            'configuracion' => $configuracion,
+        $plantilla = $sucursal->getPlantilla();
+
+        return $this->render('front/plantillas/' . $plantilla . '.html.twig', [
+            'sucursal' => $sucursal,
             'categorias' => $categorias,
         ]);
     }

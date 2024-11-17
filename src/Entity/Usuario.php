@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsuarioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,6 +28,17 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string')]
     private string $password;
+
+    /**
+     * @var Collection<int, Comercio>
+     */
+    #[ORM\OneToMany(targetEntity: Comercio::class, mappedBy: 'admin_id')]
+    private Collection $comercios;
+
+    public function __construct()
+    {
+        $this->comercios = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,5 +120,40 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Comercio>
+     */
+    public function getComercios(): Collection
+    {
+        return $this->comercios;
+    }
+
+    public function addComercio(Comercio $comercio): static
+    {
+        if (!$this->comercios->contains($comercio)) {
+            $this->comercios->add($comercio);
+            $comercio->setAdminId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComercio(Comercio $comercio): static
+    {
+        if ($this->comercios->removeElement($comercio)) {
+            // set the owning side to null (unless already changed)
+            if ($comercio->getAdminId() === $this) {
+                $comercio->setAdminId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->email ?? 'N/A';
     }
 }

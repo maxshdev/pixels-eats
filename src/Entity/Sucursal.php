@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ConfiguracionRepository;
+use App\Repository\SucursalRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ConfiguracionRepository::class)]
-class Configuracion
+#[ORM\Entity(repositoryClass: SucursalRepository::class)]
+class Sucursal
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -14,7 +14,17 @@ class Configuracion
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $nombre_negocio = null;
+    private ?string $nombre = null;
+
+    #[ORM\ManyToOne(inversedBy: 'sucursales')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Comercio $comercio_id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $plantilla = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $logo_url = null;
@@ -48,14 +58,50 @@ class Configuracion
         return $this->id;
     }
 
-    public function getNombreNegocio(): ?string
+    public function getNombre(): ?string
     {
-        return $this->nombre_negocio;
+        return $this->nombre;
     }
 
-    public function setNombreNegocio(string $nombre_negocio): static
+    public function setNombre(string $nombre): static
     {
-        $this->nombre_negocio = $nombre_negocio;
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getComercioId(): ?Comercio
+    {
+        return $this->comercio_id;
+    }
+
+    public function setComercioId(?Comercio $comercio_id): static
+    {
+        $this->comercio_id = $comercio_id;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPlantilla(): ?string
+    {
+        return $this->plantilla;
+    }
+
+    public function setPlantilla(string $plantilla): static
+    {
+        $this->plantilla = $plantilla;
 
         return $this;
     }

@@ -22,6 +22,7 @@ class ProductoCrudController extends AbstractCrudController
             Field::new('descripcion'),
             Field::new('precio'),
             AssociationField::new('categoria_id')->setLabel('Categoría'),
+            AssociationField::new('comercio_id')->setLabel('Comercio'),
         ];
     }
 }

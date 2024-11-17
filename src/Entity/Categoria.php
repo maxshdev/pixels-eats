@@ -24,6 +24,9 @@ class Categoria
     #[ORM\OneToMany(targetEntity: Producto::class, mappedBy: 'categoria_id')]
     private Collection $productos;
 
+    #[ORM\ManyToOne(inversedBy: 'categorias')]
+    private ?Comercio $comercio_id = null;
+
     public function __construct()
     {
         $this->productos = new ArrayCollection();
@@ -79,5 +82,17 @@ class Categoria
     public function __toString(): string
     {
         return $this->nombre ?? 'N/A';
+    }
+
+    public function getComercioId(): ?Comercio
+    {
+        return $this->comercio_id;
+    }
+
+    public function setComercioId(?Comercio $comercio_id): static
+    {
+        $this->comercio_id = $comercio_id;
+
+        return $this;
     }
 }

@@ -10,11 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 use App\Entity\Categoria;
-use App\Entity\Configuracion;
+use App\Entity\Comercio;
+use App\Entity\Sucursal;
 use App\Entity\Producto;
 use App\Entity\Usuario;
 
-use App\Controller\Admin\ConfiguracionCrudController;
+use App\Controller\Admin\ComercioCrudController;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -23,7 +24,7 @@ class DashboardController extends AbstractDashboardController
     {
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
 
-        return $this->redirect($adminUrlGenerator->setController(ConfiguracionCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(ComercioCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -35,15 +36,14 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        // yield MenuItem::linkToDashboard('Inicio', 'fa fa-home');
-
         yield MenuItem::section('Comercial');
-        yield MenuItem::linkToCrud('Configuración', 'fa fa-tags', Configuracion::class);
+        yield MenuItem::linkToCrud('Comercios', 'fa fa-store', Comercio::class);
+        yield MenuItem::linkToCrud('Sucursales', 'fa fa-code-branch', Sucursal::class);
 
         yield MenuItem::section('Colecciones');
-        yield MenuItem::linkToCrud('Categorias', 'fa fa-tags', Categoria::class);
-        yield MenuItem::linkToCrud('Productos', 'fa fa-tags', Producto::class);
-        yield MenuItem::linkToCrud('Usuarios', 'fa fa-tags', Usuario::class);
+        yield MenuItem::linkToCrud('Categorias', 'fa fa-layer-group', Categoria::class);
+        yield MenuItem::linkToCrud('Productos', 'fa fa-utensils', Producto::class);
+        yield MenuItem::linkToCrud('Usuarios', 'fa fa-users', Usuario::class);
 
         yield MenuItem::section('');
         yield MenuItem::linkToLogout('Logout', 'fa fa-sign-out');

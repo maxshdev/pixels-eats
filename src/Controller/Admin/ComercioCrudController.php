@@ -2,17 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Categoria;
+use App\Entity\Comercio;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
-class CategoriaCrudController extends AbstractCrudController
+class ComercioCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Categoria::class;
+        return Comercio::class;
     }
 
     public function configureFields(string $pageName): iterable
@@ -20,7 +20,8 @@ class CategoriaCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             Field::new('nombre'),
-            AssociationField::new('comercio_id')->setLabel('Comercio'),
+            Field::new('slug'),
+            AssociationField::new('admin_id')->setLabel('Administrador'),
         ];
     }
 }
